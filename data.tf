@@ -1,7 +1,7 @@
 data "aws_vpc" "selected" {
   filter {
     name   = "tag:Name"
-    values = ["shared-vpc"]
+    values = ["aalimsee-tf*"] # <<< change accordingly
   }
 }
 

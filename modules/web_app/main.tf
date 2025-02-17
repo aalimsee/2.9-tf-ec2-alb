@@ -7,12 +7,12 @@ resource "random_integer" "subnet_id_selection" {
 }
 
 resource "aws_instance" "webapp" {
-  ami                    = "ami-04c913012f8977029"
+  ami                    = "ami-053a45fff0a704a47" # <<< "ami-04c913012f8977029"
   instance_type          = var.instance_type
   subnet_id              = var.public_subnet_ids[random_integer.subnet_id_selection.result]
   vpc_security_group_ids = [aws_security_group.webapp.id]
   user_data = templatefile("${path.module}/init-script.sh", {
-    file_content = "webapp"
+    file_content = "webapp created by Aaron"
   })
 
   associate_public_ip_address = true
